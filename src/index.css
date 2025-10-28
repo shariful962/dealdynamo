@@ -6,6 +6,13 @@
   font-family: "Inter", sans-serif;
 }
 
+/* Add this in your global CSS or component CSS */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
 @theme {
   --color-Primary: #1C5941;
   --color-textClr: #575757;
@@ -14,4 +21,7 @@
 }
 .flexCenter{
   @apply flex justify-center items-center;
+}
+.flexBetween{
+  @apply flex justify-between items-center;
 }

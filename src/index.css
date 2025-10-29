@@ -25,3 +25,9 @@
 .flexBetween{
   @apply flex justify-between items-center;
 }
+.form-control {
+  @apply w-full border border-[#959595] rounded-lg px-3 py-3 focus:outline-Primary;
+}
+.authButton {
+  @apply w-full bg-Primary/80 text-white py-3 rounded-lg cursor-pointer transition-colors duration-300 hover:bg-Primary;
+}

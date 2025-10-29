@@ -57,7 +57,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               </div>
             </NavLink>
           ))}
-          <button className="flex px-3 py-3 rounded-2xl text-[#FF5C5C] gap-x-3">
+          <button className="flex px-3 py-3 rounded-2xl text-[#FF5C5C] gap-x-3 cursor-pointer" onClick={handleLogout}>
               <LogOut /> Logout
             </button>
         </nav>
@@ -112,11 +112,12 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                 </div>
               </NavLink>
             ))}
-            <button className="flex px-3 py-3 rounded-2xl text-[#FF5C5C] gap-x-3">
+            {/* logout button  */}
+            <button className="flex px-3 py-3 rounded-2xl text-[#FF5C5C] gap-x-3 cursor-pointer" onClick={handleLogout}>
               <LogOut /> Logout
             </button>
           </nav>
-          {/* Logout Button */}
+          
         </aside>
       </div>
     </div>

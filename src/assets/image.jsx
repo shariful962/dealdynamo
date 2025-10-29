@@ -1,4 +1,4 @@
-import logo from './navLogo.svg'
+import logo from './logo.png'
 import profilePic from './sidebar/sidebarProfile.jpg'
 import signinBg from './Web_illustration_2.svg'
 import googleIco from './Google.svg'

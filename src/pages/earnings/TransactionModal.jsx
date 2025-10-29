@@ -102,7 +102,7 @@ const TransactionModal = ({ isOpen, onClose, transaction }) => {
         </div>
 
         {/* Footer */}
-        <div className="flex justify-center gap-4 px-5 py-4">
+        <div className="flex justify-center gap-4 px-5 py-4 no-print">
           <button className="w-[180px] px-5 py-2 rounded-full border border-Primary text-Primary transition-colors duration-500 cursor-pointer hover:bg-Primary hover:text-white no-print" onClick={handleDownload}>
             Download
           </button>

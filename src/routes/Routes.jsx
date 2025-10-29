@@ -7,12 +7,22 @@ import Earnings from "../pages/earnings/Earnings";
 import Users from "../pages/users/Users";
 import Settings from "../pages/Settings/Settings";
 import Support from "../pages/support/Support";
+import ForgotPassword from "../pages/auth/ForgotPassword";
+import OtpVerification from "../pages/auth/OtpVerification";
 
 
 export const router = createBrowserRouter([
     {
         path:'/signin',
         Component: Signin
+    },
+    {
+        path:'/forgotpassword',
+        Component: ForgotPassword
+    },
+    {
+        path: '/otp',
+        Component: OtpVerification
     },
      
     {

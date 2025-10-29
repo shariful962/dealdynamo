@@ -86,29 +86,34 @@ const OtpVerification = () => {
     }
   };
 
-  const handlePaste = (e) => {
-    e.preventDefault();
-    const pasted = (e.clipboardData || window.clipboardData).getData("text");
-    const digits = pasted.replace(/\D/g, "").slice(0, 6).split("");
-    if (!digits.length) return;
+const handlePaste = (e, index) => {
+  e.preventDefault();
 
-    setOtp((prev) => {
-      const next = [...prev];
-      let i = 0;
-      // start filling from first empty input, or from index 0
-      while (i < digits.length && i < 6) {
-        next[i] = digits[i];
-        i += 1;
-      }
-      return next;
-    });
+  // get pasted content and extract only digits
+  const pasted = (e.clipboardData || window.clipboardData).getData("text");
+  const digits = pasted.replace(/\D/g, "").slice(0, 6 - index).split("");
+  if (!digits.length) return;
 
-    // focus the next empty or last box
-    setTimeout(() => {
-      const filled = digits.length;
-      focusInput(filled >= 6 ? 5 : filled);
-    }, 0);
-  };
+  setOtp((prev) => {
+    const next = [...prev];
+    let pos = index;
+
+    // fill the OTP starting from the box where user pasted
+    for (let ch of digits) {
+      if (pos > 5) break;
+      next[pos] = ch;
+      pos += 1;
+    }
+
+    return next;
+  });
+
+  // focus next empty box or last box
+  setTimeout(() => {
+    const nextPos = Math.min(index + digits.length, 5);
+    focusInput(nextPos);
+  }, 0);
+};
 
   const handleVerify = (e) => {
     e.preventDefault();
@@ -123,7 +128,7 @@ const OtpVerification = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#707070] px-4">
-      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+      <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md">
         {/* logo */}
         <div className="flex justify-center mb-6">
           <img src={Icons.navLogo} alt="logo" />
@@ -132,7 +137,7 @@ const OtpVerification = () => {
         {/* title + back */}
         <div className="flex justify-center mb-4">
           <div className="flex items-center gap-x-3">
-            <button onClick={() => navigate("/signin")} className="text-[#1F1D1D]">
+            <button onClick={() => navigate("/forgotpassword")} className="text-[#1F1D1D]">
               <IoArrowBack size={22} />
             </button>
             <h2 className="text-2xl font-medium text-[#1F1D1D]">Verify Email</h2>
@@ -152,7 +157,7 @@ const OtpVerification = () => {
                 value={digit}
                 onChange={(e) => handleChange(e, idx)}
                 onKeyDown={(e) => handleKeyDown(e, idx)}
-                onPaste={idx === 0 ? handlePaste : undefined} // allow paste from first box
+                onPaste={(e)=>handlePaste(e, idx)} // allow paste from first box
                 type="text"
                 inputMode="numeric"
                 pattern="[0-9]*"

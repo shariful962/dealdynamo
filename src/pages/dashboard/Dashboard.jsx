@@ -104,8 +104,8 @@ const Dashboard = () => {
               <tr>
                 <th className='px-4 py-3'>#Tr.Id</th>
                 <th className='px-4 py-3'>Username</th>
-                <th className='px-4 py-3'>Amount</th>
-                <th className='px-4 py-3'>Date</th>
+                <th className='hidden md:table-cell px-4 py-3'>Amount</th>
+                <th className='hidden md:table-cell px-4 py-3'>Date</th>
                 <th className='px-4 py-3'>Action</th>
               </tr>
             </thead>
@@ -115,8 +115,8 @@ const Dashboard = () => {
                   <tr>
                     <td className='px-4 py-3'>{user.trId}</td>
                     <td className='px-4 py-3'>{user.username}</td>
-                    <td className='px-4 py-3'>${user.amount}</td>
-                    <td className='px-4 py-3'>{user.date}</td>
+                    <td className='hidden md:table-cell px-4 py-3'>${user.amount}</td>
+                    <td className='hidden md:table-cell px-4 py-3'>{user.date}</td>
                     <td className='px-4 py-3'>
                       <LuEye size={20} className="text-Primary cursor-pointer"/>
                     </td>

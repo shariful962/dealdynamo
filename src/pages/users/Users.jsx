@@ -42,18 +42,18 @@ const Users = () => {
         <Label />
       </div>
       <div className="shadow-custom my-6 rounded-[10px] py-2 bg-white">
-        <div className="flex flex-col md:flex-row justify-between items-center  px-4 py-3 ">
+        <div className="flex flex-col lg:flex-row justify-between lg:items-center  px-4 py-3 ">
           {/* Left: Title */}
           <h2 className="text-gray-800 font-semibold text-lg">User List</h2>
 
           {/* Right: Filters */}
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             {/* Date Picker */}
             <input
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="border border-gray-300 rounded-full px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-700"
+              className="border border-gray-300 rounded-full px-3 py-2 text-sm focus:outline-Primary"
             />
 
             {/* Username Search */}
@@ -62,7 +62,7 @@ const Users = () => {
               placeholder="User Name"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="border border-gray-300 rounded-full px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-700"
+              className="border border-gray-300 rounded-full px-3 py-2 text-sm focus:outline-Primary"
             />
 
             {/* Search Button */}
@@ -81,8 +81,8 @@ const Users = () => {
                 <th className="px-4 py-3">#SI</th>
                 <th className="hidden md:table-cell px-4 py-3">Username</th>
                 <th className="hidden md:table-cell px-4 py-3">Email</th>
-                <th className="hidden md:table-cell px-4 py-3">Number</th>
-                <th className="px-4 py-3">Date</th>
+                <th className="hidden lg:table-cell px-4 py-3">Number</th>
+                <th className="md:hidden  lg:table-cell px-4 py-3">Date</th>
                 <th className="px-4 py-3">Action</th>
               </tr>
             </thead>
@@ -97,10 +97,10 @@ const Users = () => {
                     <td className="hidden md:table-cell px-4 py-3">
                       {user.email}
                     </td>
-                    <td className="hidden md:table-cell px-4 py-3">
+                    <td className="hidden lg:table-cell px-4 py-3">
                       {user.phone}
                     </td>
-                    <td className="px-4 py-3">{user.date}</td>
+                    <td className="md:hidden lg:table-cell px-4 py-3">{user.date}</td>
                     <td className="px-4 py-3">
                       <LuEye
                         size={20}
@@ -123,9 +123,9 @@ const Users = () => {
       </div>
       {/* Pagination Footer */}
       {totalPages > 1 && (
-        <div className="mt-4 flex items-center justify-between px-4 pb-4">
+        <div className="mt-4 flex items-center md:justify-center lg:justify-between px-4 pb-4">
           {/* Left: showing X–Y of Z */}
-          <div className="hidden md:block text-lg text-Secondary">
+          <div className="hidden lg:block text-lg text-Secondary">
             SHOWING {startIndex + 1}–{Math.min(endIndex, users.length)} OF{" "}
             {users.length}
           </div>

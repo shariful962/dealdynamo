@@ -120,7 +120,7 @@ const handlePaste = (e, index) => {
     const code = otp.join("");
     if (code.length === 6 && /^\d{6}$/.test(code)) {
       // OTP valid — redirect
-      navigate("/reset-password");
+      navigate("/resetpassword");
     } else {
       alert("Please enter a 6-digit OTP");
     }
@@ -137,7 +137,7 @@ const handlePaste = (e, index) => {
         {/* title + back */}
         <div className="flex justify-center mb-4">
           <div className="flex items-center gap-x-3">
-            <button onClick={() => navigate("/forgotpassword")} className="text-[#1F1D1D]">
+            <button onClick={() => navigate("/forgotpassword")} className="text-[#1F1D1D] cursor-pointer">
               <IoArrowBack size={22} />
             </button>
             <h2 className="text-2xl font-medium text-[#1F1D1D]">Verify Email</h2>
@@ -168,7 +168,7 @@ const handlePaste = (e, index) => {
             ))}
           </div>
 
-          <button type="submit" className={`w-full py-3  rounded-lg transition-colors duration-150 ${
+          <button type="submit" className={`w-full py-3 mb-6 rounded-lg transition-colors duration-150 ${
           otp.every((e) => e.trim() !== "")
             ? "bg-Primary text-white cursor-pointer"
             : "bg-Primary/50 text-white cursor-not-allowed"

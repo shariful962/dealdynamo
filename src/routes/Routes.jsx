@@ -10,6 +10,11 @@ import Support from "../pages/support/Support";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import OtpVerification from "../pages/auth/OtpVerification";
 import ResetPassword from "../pages/auth/ResetPassword";
+import PernonalInformation from "../pages/Settings/personal information/PernonalInformation";
+import ChangePassword from "../pages/Settings/change password/ChangePassword";
+import TermsConditions from "../pages/Settings/terms & conditions/TermsConditions";
+import PrivacyPolicy from "../pages/Settings/privacy and policy/PrivacyPolicy";
+import FAQ from "../pages/Settings/faq/FAQ";
 
 
 export const router = createBrowserRouter([
@@ -51,6 +56,26 @@ export const router = createBrowserRouter([
             {
                 path: 'settings',
                 Component: Settings
+            },
+            {
+                path: 'settings/personal-information',
+                Component: PernonalInformation
+            },
+            {
+                path: 'settings/change-password',
+                Component: ChangePassword
+            },
+            {
+                path: 'settings/terms-conditions',
+                Component: TermsConditions
+            },
+            {
+                path: 'settings/privacy-policy',
+                Component: PrivacyPolicy
+            },
+            {
+                path: 'settings/faq',
+                Component: FAQ
             },
             {
                 path: 'support',

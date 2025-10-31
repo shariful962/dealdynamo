@@ -14,6 +14,7 @@ import { Select, MenuItem } from "@mui/material";
 import Label from '../../common/Label'
 import { tr } from 'framer-motion/client';
 import { LuEye } from 'react-icons/lu';
+import Header from '../../components/header/Header';
 
 const yearlyData = {
   2024: [
@@ -63,7 +64,9 @@ const Dashboard = () => {
 
   return (
   <div className='px-4'>
-    <Label />
+    <div className='mt-4'>
+      <Label  />
+    </div>
     {/* chart section  */}
      <div className="bg-white shadow-custom rounded-[10px] p-4 mt-6">
       {/* Chart Header with Year Selector */}

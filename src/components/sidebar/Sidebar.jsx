@@ -1,6 +1,6 @@
 import React from "react";
 import Icons from "../../assets/image";
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { LogOut, X } from "lucide-react";
 import { HiOutlineUsers } from "react-icons/hi2";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -9,6 +9,7 @@ import { TfiLayers } from "react-icons/tfi";
 import { MdDashboard } from "react-icons/md";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
+  const location = useLocation();
   const navigate = useNavigate();
   const links = [
     { id: 1, name: "Dashboard", path: "/dashboard", ico: MdDashboard },
@@ -44,7 +45,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               to={link.path}
               className={({ isActive }) =>
                 `px-4 py-3 mb-3 rounded-[16px] text-base h-12 flex items-center  ${
-                  isActive
+                 location.pathname.startsWith(link.path)
                     ? "bg-Primary text-white font-medium"
                     : "hover:text-textClr"
                 }`
@@ -99,7 +100,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                 onClick={() => setIsOpen(false)}
                 className={({ isActive }) =>
                   `block px-3 py-3 rounded-2xl text-base ${
-                    isActive
+                    location.pathname.startsWith(link.path)
                       ? "bg-Primary text-white font-medium"
                       : "hover:text-textClr"
                   }`

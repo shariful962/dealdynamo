@@ -140,7 +140,7 @@ const Earnings = () => {
 
   return (
     <div className="px-4">
-      <div>
+      <div className="mt-4">
         <Label />
       </div>
       <div className="shadow-custom my-6 rounded-[10px] py-2 bg-white">

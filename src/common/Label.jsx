@@ -65,7 +65,7 @@ const Label = () => {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8 py-2">
       {labels.map((label) => (
         <div key={label.id}>
-          <div className="bg-white shadow-custom rounded-[20px] p-6">
+          <div className="bg-white shadow-custom rounded-[20px] p-6 h-40">
             <h1>{label.title}</h1>
 
             {/* Conditional for amount vs decimal */}

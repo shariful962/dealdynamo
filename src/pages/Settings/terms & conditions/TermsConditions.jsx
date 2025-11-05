@@ -1,83 +1,145 @@
-// import React, { useState } from 'react';
+
+// import React, { useState } from "react";
+// import ReactQuill from "react-quill-new";
+// import "react-quill-new/dist/quill.snow.css";
 
 // const TermsConditions = () => {
+//   const [isEditing, setIsEditing] = useState(false);
 //   const [content, setContent] = useState(`
-//     Lorem ipsum dolor sit amet consectetur. Fringilla a cras vitae orci. Egestas dui id nisl sed ante congue scelerisque. 
-//     Eleifend facilisis aliquet tempus morbi leo sagittis. Pellentesque odio amet turpis habitant. Imperdiet tincidunt nisl 
-//     consectetur hendrerit accumsan vehicula imperdiet mattis. Neque a vitae diam pharetra duis habitasse convallis luctus pulvinar.
-//     Pharetra nunc morbi elementum nisl magnis convallis arcu enim tortor. Cursus a sed tortor enim mi imperdiet massa donec mauris.
-//     Sem morbi morbi posuere faucibus. Cras risus ultrices duis pharetra sit porttitor elementum sagittis elementum. Ut vitae blandit pulvinar fermentum in id sed...
+//     <p>Lorem ipsum dolor sit amet consectetur...</p>
 //   `);
 
-//   const handleEdit = () => {
-//     const newContent = prompt('Edit your Terms & Conditions:', content);
-//     if (newContent !== null) {
-//       setContent(newContent);
-//     }
+//   const handleEdit = () => setIsEditing(true);
+//   const handleSave = () => {
+//     setIsEditing(false);
+//     console.log("Updated content:", content);
+//   };
+
+//   // Full-featured toolbar
+//   const modules = {
+//     toolbar: [
+//       [{ font: [] }], // font family
+//       [{ header: [1, 2, 3, 4, 5, 6, false] }], // headers
+//       [{ size: ["small", false, "large", "huge"] }], // font size
+//       ["bold", "italic", "underline", "strike"], // text styles
+//       [{ color: [] }, { background: [] }], // color & background
+//       [{ align: [] }], // alignment
+//       [{ list: "ordered" }, { list: "bullet" }], // lists
+//       ["link", "image", "blockquote", "code-block"], // links, images, blocks
+//       ["clean"], // remove formatting
+//     ],
 //   };
 
 //   return (
 //     <div className="max-w-4xl mx-auto p-6 mt-10 bg-white shadow-md rounded-lg">
-//       <h1 className="text-2xl font-semibold text-center mb-4">Terms & Conditions</h1>
-//       <p className="text-base text-gray-700 leading-relaxed mb-4">{content}</p>
-//       <button
-//         onClick={handleEdit}
-//         className="bg-blue-500 text-white py-2 px-6 rounded-full hover:bg-blue-600 transition duration-300"
-//       >
-//         Edit
-//       </button>
+//       <h1 className="text-2xl font-semibold text-center mb-4">
+//         Terms & Conditions
+//       </h1>
+
+//       {isEditing ? (
+//         <div>
+//           <ReactQuill
+//             value={content}
+//             onChange={setContent}
+//             modules={modules} // full toolbar
+//           />
+//           <button
+//             onClick={handleSave}
+//             className="bg-green-500 text-white py-2 px-6 rounded-full hover:bg-green-600 transition duration-300 mt-4"
+//           >
+//             Update
+//           </button>
+//         </div>
+//       ) : (
+//         <div>
+//           <div
+//             className="text-base text-gray-700 leading-relaxed mb-4"
+//             dangerouslySetInnerHTML={{ __html: content }}
+//           />
+//           <button
+//             onClick={handleEdit}
+//             className="bg-blue-500 text-white py-2 px-6 rounded-full hover:bg-blue-600 transition duration-300"
+//           >
+//             Edit
+//           </button>
+//         </div>
+//       )}
 //     </div>
 //   );
 // };
 
 // export default TermsConditions;
 
-import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
-import 'react-quill/dist/quill.snow.css';
 
-// Dynamically import ReactQuill to disable SSR
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+import React, { useState } from "react";
+import { IoArrowBack } from "react-icons/io5";
+import ReactQuill from "react-quill-new";
+import "react-quill-new/dist/quill.snow.css";
+import { useNavigate } from "react-router";
 
 const TermsConditions = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [content, setContent] = useState(`
-    Lorem ipsum dolor sit amet consectetur. Augue nisl sed nulla habitant nisl vel diam eleifend porta. Nec sagittis convallis commodo nisi convallis eu. Nec nibh aliquam euismod nunc bibendum non posuere. Ipsum donec enim quis magna proin pulvinar. Tellus egestas vulputate sit scelerisque. Volutpat maecenas in purus quisque arcu consequat augue. Quis maecenas euismod quis nec iaculis pellentesque. Amet id praesent ut vulputate curabitur. Posuere tellus at nisl sit velit ut pulvinar sed. Eiusmod eu nec tincidunt tincidunt ut lacinia nunc dui. Duis vulputate tellus a cras.
+    <p>Lorem ipsum dolor sit amet consectetur...</p>
   `);
+  const navigate = useNavigate()
+  
 
-  const handleEdit = () => {
-    setIsEditing(true);
-  };
 
+  const handleEdit = () => setIsEditing(true);
   const handleSave = () => {
     setIsEditing(false);
-    // Here you could send the updated content to an API or save it
-    console.log('Updated content:', content);
+    console.log("Updated content:", content);
+  };
+
+  // Minimal toolbar like your screenshot
+  const modules = {
+    toolbar: [
+      [{ size: ["small", false, "large", "huge"] }], // add font sizes
+      ["bold", "italic", "underline", "strike"], // text styles
+      [{ align: [] }], // alignment
+      [{ list: "ordered" }, { list: "bullet" }], // lists
+      [{ color: [] }, { background: [] }],
+      ["link"], // link
+      ["image"]
+      
+    ],
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 mt-10 bg-white shadow-md rounded-lg">
-      <h1 className="text-2xl font-semibold text-center mb-4">Terms & Conditions</h1>
-      
+    <div className="max-w-4xl mx-auto p-6 mt-10 bg-white shadow-custome rounded-lg">
+      <div className="flex items-center mb-4">
+          <IoArrowBack className="text-xl mr-2 cursor-pointer" onClick={()=>navigate('/settings')} />
+          <h2 className="text-2xl text-[#1F1D1D] font-medium">Terms & Conditions</h2>
+        </div>
+
       {isEditing ? (
         <div>
-          <ReactQuill value={content} onChange={setContent} />
+          <ReactQuill
+            value={content}
+            onChange={setContent}
+            modules={modules}
+          />
           <button
             onClick={handleSave}
-            className="bg-green-500 text-white py-2 px-6 rounded-full hover:bg-green-600 transition duration-300 mt-4"
+            className="bg-Primary text-white py-2 px-6 rounded-lg  cursor-pointer mt-4"
           >
             Update
           </button>
         </div>
       ) : (
         <div>
-          <p className="text-base text-gray-700 leading-relaxed mb-4">{content}</p>
+          <div
+            className="text-base text-gray-700 leading-relaxed mb-4"
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
           <button
             onClick={handleEdit}
-            className="bg-blue-500 text-white py-2 px-6 rounded-full hover:bg-blue-600 transition duration-300"
+            className="bg-Primary text-white py-2 px-6 rounded-lg  cursor-pointer mt-4"
           >
             Edit
           </button>
+       
         </div>
       )}
     </div>
@@ -85,3 +147,5 @@ const TermsConditions = () => {
 };
 
 export default TermsConditions;
+
+
